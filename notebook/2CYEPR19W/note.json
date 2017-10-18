@@ -1,9 +1,34 @@
 {
   "paragraphs": [
     {
+      "text": "%md\n\nYou can run any cell by hitting \"shift-enter\" or run all cells using the \"play\" button in the tool bar on the left.\n\nThe first cell is to delete the students table if necessary. You can use this to drop the table as needed.\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Oct 18, 2017 10:16:15 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1508364838460_891532500",
+      "id": "20171018-221358_603056497",
+      "dateCreated": "Oct 18, 2017 10:13:58 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%sql\n\nDROP TABLE IF EXISTS students",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 7:37:11 PM",
+      "dateUpdated": "Oct 18, 2017 10:11:21 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -32,51 +57,15 @@
       "jobName": "paragraph_1508355349341_1791207668",
       "id": "20171018-193549_2146325019",
       "dateCreated": "Oct 18, 2017 7:35:49 PM",
-      "dateStarted": "Oct 18, 2017 7:37:11 PM",
-      "dateFinished": "Oct 18, 2017 7:37:11 PM",
+      "dateStarted": "Oct 18, 2017 10:11:21 PM",
+      "dateFinished": "Oct 18, 2017 10:11:22 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%file\n\nrm /tmp/students",
+      "text": "case class Mark(value: String)\n\nobject Marks {\n  val A \u003d Mark(\"A\")\n  val B \u003d Mark(\"B\")\n  val C \u003d Mark(\"C\")\n}\n\ncase class Course(name: String)\n\ncase class Grade(course: Course, mark: Mark)\n\ncase class Student(name: String, yearOfBirth: Int, yearOfEnrolment: Int, mark: Int, grades: List[Grade])\n\nval students \u003d List(\nStudent(\"Jane\", 1989, 2016, 91, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Joe\", 1992, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"Jim\", 1994, 2016, 84, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"James\", 1991, 2016, 58, List(Grade(Course(\"Big Data\"), Marks.C))),\nStudent(\"John\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Jemma\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Jon\", 1992, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"Jimbo\", 1994, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"Jamie\", 1991, 2016, 58, List(Grade(Course(\"Big Data\"), Marks.C))),\nStudent(\"Johnson\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A)))\n)\n\n\n// spark context\nval rdd \u003d sc.parallelize(students)\nval df \u003d rdd.toDF\n\n// df.show\n\nval ds \u003d spark.createDataset(rdd)\n\n// val ds: Dataset[Student] \u003d df.as[Student]\n\n\nds.map(s \u003d\u003e s.mark)\n\ndf.write.option(\"path\", \"/tmp/students\").mode(\"overwrite\").saveAsTable(\"students\")\n",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 7:42:16 PM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/undefined"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Unknown command"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1508355598323_1117713203",
-      "id": "20171018-193958_1246147270",
-      "dateCreated": "Oct 18, 2017 7:39:58 PM",
-      "dateStarted": "Oct 18, 2017 7:42:16 PM",
-      "dateFinished": "Oct 18, 2017 7:42:16 PM",
-      "status": "ERROR",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "case class Mark(value: String)\n\nobject Marks {\n  val A \u003d Mark(\"A\")\n  val B \u003d Mark(\"B\")\n  val C \u003d Mark(\"C\")\n}\n\ncase class Course(name: String)\n\ncase class Grade(course: Course, mark: Mark)\n\ncase class Student(name: String, yearOfBirth: Int, yearOfEnrolment: Int, mark: Int, grades: List[Grade])\n\nval students \u003d List(\nStudent(\"Jane\", 1989, 2016, 91, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Joe\", 1992, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"Jim\", 1994, 2016, 84, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"James\", 1991, 2016, 58, List(Grade(Course(\"Big Data\"), Marks.C))),\nStudent(\"John\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Jane\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Joe\", 1992, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"Jim\", 1994, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"James\", 1991, 2016, 58, List(Grade(Course(\"Big Data\"), Marks.C))),\nStudent(\"John\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A)))\n)\n\n\n// spark context\nval rdd \u003d sc.parallelize(students)\nval df \u003d rdd.toDF\n\n// df.show\n\nval ds \u003d spark.createDataset(rdd)\n\n// val ds: Dataset[Student] \u003d df.as[Student]\n\n\nds.map(s \u003d\u003e s.mark)\n\ndf.write.option(\"path\", \"/tmp/students\").saveAsTable(\"students\")\n",
-      "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 7:39:56 PM",
+      "dateUpdated": "Oct 18, 2017 10:17:38 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -91,11 +80,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "defined class Mark\ndefined object Marks\ndefined class Course\ndefined class Grade\ndefined class Student\nstudents: List[Student] \u003d List(Student(Jane,1989,2016,91,List(Grade(Course(Big Data),Mark(A)))), Student(Joe,1992,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jim,1994,2016,84,List(Grade(Course(Big Data),Mark(B)))), Student(James,1991,2016,58,List(Grade(Course(Big Data),Mark(C)))), Student(John,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))), Student(Jane,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))), Student(Joe,1992,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jim,1994,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(James,1991,2016,58,List(Grade(Course(Big Data),Mark(C)))), Student(John,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))))\nrdd: org.apache.spark.rdd.RDD[Student] \u003d ParallelCollectionRDD[83] at parallelize at \u003cconsole\u003e:42\ndf: org.apache.spark.sql.DataFrame \u003d [name: string, yearOfBirth: int ... 3 more fields]\nds: org.apache.spark.sql.Dataset[Student] \u003d [name: string, yearOfBirth: int ... 3 more fields]\nres641: org.apache.spark.sql.Dataset[Int] \u003d [value: int]\n\u003cconsole\u003e:27: error: not found: value dbfs\n       dbfs.rm(\"/tmp/students\")\n       ^\n"
+            "data": "defined class Mark\ndefined object Marks\ndefined class Course\ndefined class Grade\ndefined class Student\nstudents: List[Student] \u003d List(Student(Jane,1989,2016,91,List(Grade(Course(Big Data),Mark(A)))), Student(Joe,1992,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jim,1994,2016,84,List(Grade(Course(Big Data),Mark(B)))), Student(James,1991,2016,58,List(Grade(Course(Big Data),Mark(C)))), Student(John,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))), Student(Jemma,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))), Student(Jon,1992,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jimbo,1994,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jamie,1991,2016,58,List(Grade(Course(Big Data),Mark(C)))), Student(Johnson,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))))\nrdd: org.apache.spark.rdd.RDD[Student] \u003d ParallelCollectionRDD[104] at parallelize at \u003cconsole\u003e:42\ndf: org.apache.spark.sql.DataFrame \u003d [name: string, yearOfBirth: int ... 3 more fields]\nds: org.apache.spark.sql.Dataset[Student] \u003d [name: string, yearOfBirth: int ... 3 more fields]\nres713: org.apache.spark.sql.Dataset[Int] \u003d [value: int]\n"
           }
         ]
       },
@@ -103,22 +92,22 @@
       "jobName": "paragraph_1508303249308_1533965229",
       "id": "20171018-050729_730711942",
       "dateCreated": "Oct 18, 2017 5:07:29 AM",
-      "dateStarted": "Oct 18, 2017 7:39:02 PM",
-      "dateFinished": "Oct 18, 2017 7:39:04 PM",
-      "status": "ERROR",
+      "dateStarted": "Oct 18, 2017 10:17:38 PM",
+      "dateFinished": "Oct 18, 2017 10:17:41 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sql\n\nselect * from students",
+      "text": "%sql\n\nselect name, mark from students",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 7:37:00 PM",
+      "dateUpdated": "Oct 18, 2017 10:18:02 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
+              "mode": "multiBarChart",
               "height": 300.0,
               "optionOpen": false
             },
@@ -135,11 +124,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
-            "type": "TEXT",
-            "data": "Table or view not found: students; line 1 pos 14\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+            "type": "TABLE",
+            "data": "name\tmark\nJimbo\t85\nJamie\t58\nJohnson\t92\nJim\t84\nJames\t58\nJohn\t92\nJemma\t92\nJon\t85\nJane\t91\nJoe\t85\n"
           }
         ]
       },
@@ -147,34 +136,37 @@
       "jobName": "paragraph_1508303341171_-1287059679",
       "id": "20171018-050901_878127",
       "dateCreated": "Oct 18, 2017 5:09:01 AM",
-      "dateStarted": "Oct 18, 2017 7:37:01 PM",
-      "dateFinished": "Oct 18, 2017 7:37:02 PM",
-      "status": "ERROR",
+      "dateStarted": "Oct 18, 2017 10:17:56 PM",
+      "dateFinished": "Oct 18, 2017 10:17:57 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sql\n\n-- calculate the mean of the marks\n-- calculate the mode (the most common mark)\n-- calculate the range of marks (clue: the maximum minus the minimum)\n-- calculate the upper and lower quartile marks (namely the mark at 25% and 75% of the range)\n\n",
+      "text": "%md\n\n-- calculate the mean of the marks\n-- calculate the mode (the most common mark)\n-- calculate the range of marks (clue: the maximum minus the minimum)\n-- calculate the upper and lower quartile marks (namely the mark at 25% and 75% of the range)\n\nUse %sql as the cell type. Click the cog icon in top right of cell to perform commands such as to add another cell or to move cells up or down.\n",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 7:37:00 PM",
+      "dateUpdated": "Oct 18, 2017 10:13:05 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "sql"
+          "language": "markdown",
+          "editOnDblClick": true
         },
-        "editorMode": "ace/mode/sql"
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
-            "type": "TEXT",
-            "data": "\nno viable alternative at input \u0027\u003cEOF\u003e\u0027(line 4, pos 93)\n\n\u003d\u003d SQL \u003d\u003d\n-- calculate the mean of the marks\n-- calculate the mode (the most common mark)\n-- calculate the range of marks (clue: the maximum minus the minimum)\n-- calculate the upper and lower quartile marks (namely the mark at 25% and 75% of the range)\n---------------------------------------------------------------------------------------------^^^\n\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u0026ndash; calculate the mean of the marks\u003cbr/\u003e\u0026ndash; calculate the mode (the most common mark)\u003cbr/\u003e\u0026ndash; calculate the range of marks (clue: the maximum minus the minimum)\u003cbr/\u003e\u0026ndash; calculate the upper and lower quartile marks (namely the mark at 25% and 75% of the range)\u003c/p\u003e\n\u003cp\u003eUse %sql as the cell type. Click the cog icon in top right of cell to perform commands such as to add another cell or to move cells up or down.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -182,15 +174,15 @@
       "jobName": "paragraph_1508354955781_460226594",
       "id": "20171018-192915_2097875106",
       "dateCreated": "Oct 18, 2017 7:29:15 PM",
-      "dateStarted": "Oct 18, 2017 7:37:02 PM",
-      "dateFinished": "Oct 18, 2017 7:37:02 PM",
-      "status": "ERROR",
+      "dateStarted": "Oct 18, 2017 10:12:55 PM",
+      "dateFinished": "Oct 18, 2017 10:12:55 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql\n",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 7:37:00 PM",
+      "dateUpdated": "Oct 18, 2017 10:11:22 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
