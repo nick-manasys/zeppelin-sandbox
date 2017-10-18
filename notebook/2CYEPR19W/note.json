@@ -3,7 +3,7 @@
     {
       "text": "%md\n\nYou can run any cell by entering it by clicking on it and hitting \"shift-enter\" or run all cells using the \"play\" button in the tool bar on the left.\n\nThe first cell is to delete the students table if necessary. You can use this to drop the table as needed.\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 10:23:03 PM",
+      "dateUpdated": "Oct 18, 2017 10:23:21 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
