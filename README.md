@@ -1,8 +1,8 @@
 # zeppelin-sandbox
 
-#How To Run Zeppelin Using Docker
+# How To Run Zeppelin Using Docker
 
-##Prerequisites
+## Prerequisites
 Install git for your operating system or a tool like source tree from Atlassian
 
 Go to https://www.docker.com/ and download docker for your operating system and install it. This should give you the docker commands in a shell
@@ -17,4 +17,3 @@ Execute the command
 ~~~~
 run.sh
 ~~~~
-
