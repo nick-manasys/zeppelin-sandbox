@@ -1,43 +1,54 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\nYou can run any cell by hitting \"shift-enter\" or run all cells using the \"play\" button in the tool bar on the left.\n\nThe first cell is to delete the students table if necessary. You can use this to drop the table as needed.\n\n\n",
+      "text": "%md\n\nYou can run any cell by entering it by clicking on it and hitting \"shift-enter\" or run all cells using the \"play\" button in the tool bar on the left.\n\nThe first cell is to delete the students table if necessary. You can use this to drop the table as needed.\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 10:16:15 PM",
+      "dateUpdated": "Oct 18, 2017 10:23:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eYou can run any cell by entering it by clicking on it and hitting \u0026ldquo;shift-enter\u0026rdquo; or run all cells using the \u0026ldquo;play\u0026rdquo; button in the tool bar on the left.\u003c/p\u003e\n\u003cp\u003eThe first cell is to delete the students table if necessary. You can use this to drop the table as needed.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1508364838460_891532500",
       "id": "20171018-221358_603056497",
       "dateCreated": "Oct 18, 2017 10:13:58 PM",
-      "status": "READY",
+      "dateStarted": "Oct 18, 2017 10:23:03 PM",
+      "dateFinished": "Oct 18, 2017 10:23:03 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql\n\nDROP TABLE IF EXISTS students",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 10:11:21 PM",
+      "dateUpdated": "Oct 18, 2017 10:23:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "sql",
+          "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/sql",
+        "editorMode": "ace/mode/text",
         "tableHide": true
       },
       "settings": {
@@ -57,23 +68,24 @@
       "jobName": "paragraph_1508355349341_1791207668",
       "id": "20171018-193549_2146325019",
       "dateCreated": "Oct 18, 2017 7:35:49 PM",
-      "dateStarted": "Oct 18, 2017 10:11:21 PM",
-      "dateFinished": "Oct 18, 2017 10:11:22 PM",
+      "dateStarted": "Oct 18, 2017 10:23:03 PM",
+      "dateFinished": "Oct 18, 2017 10:23:05 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "case class Mark(value: String)\n\nobject Marks {\n  val A \u003d Mark(\"A\")\n  val B \u003d Mark(\"B\")\n  val C \u003d Mark(\"C\")\n}\n\ncase class Course(name: String)\n\ncase class Grade(course: Course, mark: Mark)\n\ncase class Student(name: String, yearOfBirth: Int, yearOfEnrolment: Int, mark: Int, grades: List[Grade])\n\nval students \u003d List(\nStudent(\"Jane\", 1989, 2016, 91, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Joe\", 1992, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"Jim\", 1994, 2016, 84, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"James\", 1991, 2016, 58, List(Grade(Course(\"Big Data\"), Marks.C))),\nStudent(\"John\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Jemma\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A))),\nStudent(\"Jon\", 1992, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"Jimbo\", 1994, 2016, 85, List(Grade(Course(\"Big Data\"), Marks.B))),\nStudent(\"Jamie\", 1991, 2016, 58, List(Grade(Course(\"Big Data\"), Marks.C))),\nStudent(\"Johnson\", 1989, 2016, 92, List(Grade(Course(\"Big Data\"), Marks.A)))\n)\n\n\n// spark context\nval rdd \u003d sc.parallelize(students)\nval df \u003d rdd.toDF\n\n// df.show\n\nval ds \u003d spark.createDataset(rdd)\n\n// val ds: Dataset[Student] \u003d df.as[Student]\n\n\nds.map(s \u003d\u003e s.mark)\n\ndf.write.option(\"path\", \"/tmp/students\").mode(\"overwrite\").saveAsTable(\"students\")\n",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 10:17:38 PM",
+      "dateUpdated": "Oct 18, 2017 10:23:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "scala"
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -84,7 +96,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "defined class Mark\ndefined object Marks\ndefined class Course\ndefined class Grade\ndefined class Student\nstudents: List[Student] \u003d List(Student(Jane,1989,2016,91,List(Grade(Course(Big Data),Mark(A)))), Student(Joe,1992,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jim,1994,2016,84,List(Grade(Course(Big Data),Mark(B)))), Student(James,1991,2016,58,List(Grade(Course(Big Data),Mark(C)))), Student(John,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))), Student(Jemma,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))), Student(Jon,1992,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jimbo,1994,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jamie,1991,2016,58,List(Grade(Course(Big Data),Mark(C)))), Student(Johnson,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))))\nrdd: org.apache.spark.rdd.RDD[Student] \u003d ParallelCollectionRDD[104] at parallelize at \u003cconsole\u003e:42\ndf: org.apache.spark.sql.DataFrame \u003d [name: string, yearOfBirth: int ... 3 more fields]\nds: org.apache.spark.sql.Dataset[Student] \u003d [name: string, yearOfBirth: int ... 3 more fields]\nres713: org.apache.spark.sql.Dataset[Int] \u003d [value: int]\n"
+            "data": "defined class Mark\ndefined object Marks\ndefined class Course\ndefined class Grade\ndefined class Student\nstudents: List[Student] \u003d List(Student(Jane,1989,2016,91,List(Grade(Course(Big Data),Mark(A)))), Student(Joe,1992,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jim,1994,2016,84,List(Grade(Course(Big Data),Mark(B)))), Student(James,1991,2016,58,List(Grade(Course(Big Data),Mark(C)))), Student(John,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))), Student(Jemma,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))), Student(Jon,1992,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jimbo,1994,2016,85,List(Grade(Course(Big Data),Mark(B)))), Student(Jamie,1991,2016,58,List(Grade(Course(Big Data),Mark(C)))), Student(Johnson,1989,2016,92,List(Grade(Course(Big Data),Mark(A)))))\nrdd: org.apache.spark.rdd.RDD[Student] \u003d ParallelCollectionRDD[14] at parallelize at \u003cconsole\u003e:42\ndf: org.apache.spark.sql.DataFrame \u003d [name: string, yearOfBirth: int ... 3 more fields]\nds: org.apache.spark.sql.Dataset[Student] \u003d [name: string, yearOfBirth: int ... 3 more fields]\nres33: org.apache.spark.sql.Dataset[Int] \u003d [value: int]\n"
           }
         ]
       },
@@ -92,15 +104,15 @@
       "jobName": "paragraph_1508303249308_1533965229",
       "id": "20171018-050729_730711942",
       "dateCreated": "Oct 18, 2017 5:07:29 AM",
-      "dateStarted": "Oct 18, 2017 10:17:38 PM",
-      "dateFinished": "Oct 18, 2017 10:17:41 PM",
+      "dateStarted": "Oct 18, 2017 10:23:03 PM",
+      "dateFinished": "Oct 18, 2017 10:23:09 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql\n\nselect name, mark from students",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 10:18:02 PM",
+      "dateUpdated": "Oct 18, 2017 10:23:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -115,9 +127,10 @@
           }
         },
         "editorSetting": {
-          "language": "sql"
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/sql"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -136,15 +149,15 @@
       "jobName": "paragraph_1508303341171_-1287059679",
       "id": "20171018-050901_878127",
       "dateCreated": "Oct 18, 2017 5:09:01 AM",
-      "dateStarted": "Oct 18, 2017 10:17:56 PM",
-      "dateFinished": "Oct 18, 2017 10:17:57 PM",
+      "dateStarted": "Oct 18, 2017 10:23:05 PM",
+      "dateFinished": "Oct 18, 2017 10:23:09 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n\n-- calculate the mean of the marks\n-- calculate the mode (the most common mark)\n-- calculate the range of marks (clue: the maximum minus the minimum)\n-- calculate the upper and lower quartile marks (namely the mark at 25% and 75% of the range)\n\nUse %sql as the cell type. Click the cog icon in top right of cell to perform commands such as to add another cell or to move cells up or down.\n",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 10:13:05 PM",
+      "dateUpdated": "Oct 18, 2017 10:23:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -174,23 +187,24 @@
       "jobName": "paragraph_1508354955781_460226594",
       "id": "20171018-192915_2097875106",
       "dateCreated": "Oct 18, 2017 7:29:15 PM",
-      "dateStarted": "Oct 18, 2017 10:12:55 PM",
-      "dateFinished": "Oct 18, 2017 10:12:55 PM",
+      "dateStarted": "Oct 18, 2017 10:23:03 PM",
+      "dateFinished": "Oct 18, 2017 10:23:03 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql\n",
       "user": "anonymous",
-      "dateUpdated": "Oct 18, 2017 10:11:22 PM",
+      "dateUpdated": "Oct 18, 2017 10:23:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "sql"
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/sql"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -207,25 +221,25 @@
   "name": "AUT Notebook",
   "id": "2CYEPR19W",
   "angularObjects": {
-    "2CV5UYBZZ:shared_process": [],
-    "2CXDFJNYA:shared_process": [],
-    "2CYMYC8QZ:shared_process": [],
-    "2CUYACR1T:shared_process": [],
-    "2CVSJCD2G:shared_process": [],
-    "2CX6587EZ:shared_process": [],
-    "2CX8NZFS2:shared_process": [],
-    "2CVSJX2N1:shared_process": [],
-    "2CWG41P6P:shared_process": [],
-    "2CV94R7QH:shared_process": [],
-    "2CVZJST5V:shared_process": [],
-    "2CWJFWRBQ:shared_process": [],
-    "2CW2S1881:shared_process": [],
-    "2CUYYPG6D:shared_process": [],
-    "2CW9ZZDBD:shared_process": [],
-    "2CY9CQCF9:shared_process": [],
-    "2CVT4NM8K:shared_process": [],
-    "2CVXVMFT7:shared_process": [],
-    "2CWDNYYJ8:shared_process": []
+    "2CWEXRK2Y:shared_process": [],
+    "2CVPG5SMR:shared_process": [],
+    "2CWP25PRM:shared_process": [],
+    "2CXP4CZ4A:shared_process": [],
+    "2CX84GU9G:shared_process": [],
+    "2CXHU1ZB1:shared_process": [],
+    "2CVYCRQAT:shared_process": [],
+    "2CVN54AVG:shared_process": [],
+    "2CV3V1C1N:shared_process": [],
+    "2CV4X7KZH:shared_process": [],
+    "2CYKQDA2E:shared_process": [],
+    "2CWEAGMG5:shared_process": [],
+    "2CUZ98UGW:shared_process": [],
+    "2CXYN6DNF:shared_process": [],
+    "2CWTJE5VJ:shared_process": [],
+    "2CWRYSUPY:shared_process": [],
+    "2CVUEEH6Y:shared_process": [],
+    "2CUY5X11C:shared_process": [],
+    "2CV49NP6M:shared_process": []
   },
   "config": {},
   "info": {}
