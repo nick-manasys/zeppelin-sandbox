@@ -17,3 +17,8 @@ Execute the command
 ~~~~
 run.sh
 ~~~~
+
+# NB
+You may need to click the "Save" button at the bottom of the list of interpreters which appears when you first browse zeppelin
+
+You can change the run.sh script. The first number before the colon is the port number you use on your machine (the host). You may need to change this if you already have something running on the port in the script
